@@ -8,7 +8,7 @@ const StyledPage = styled.div`
 `;
 
 export function Index() {
-  const [message, setMessage] = useState('asd');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     fetch('/api/hello')
