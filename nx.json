@@ -27,6 +27,12 @@
     ]
   },
   "projects": {
+    "api-interfaces": {
+      "tags": []
+    },
+    "calendinner-api": {
+      "tags": []
+    },
     "calendinner-web": {
       "tags": []
     },

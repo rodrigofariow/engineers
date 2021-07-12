@@ -1,6 +1,69 @@
 {
   "version": 2,
   "projects": {
+    "api-interfaces": {
+      "root": "libs/api-interfaces",
+      "sourceRoot": "libs/api-interfaces/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        }
+      }
+    },
+    "calendinner-api": {
+      "root": "apps/calendinner-api",
+      "sourceRoot": "apps/calendinner-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/calendinner-api",
+            "main": "apps/calendinner-api/src/main.ts",
+            "tsConfig": "apps/calendinner-api/tsconfig.app.json",
+            "assets": ["apps/calendinner-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/calendinner-api/src/environments/environment.ts",
+                  "with": "apps/calendinner-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "calendinner-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/calendinner-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/calendinner-api"],
+          "options": {
+            "jestConfig": "apps/calendinner-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "calendinner-web": {
       "root": "apps/calendinner-web",
       "sourceRoot": "apps/calendinner-web",
@@ -21,7 +84,8 @@
           "executor": "@nrwl/next:server",
           "options": {
             "buildTarget": "calendinner-web:build",
-            "dev": true
+            "dev": true,
+            "proxyConfig": "apps/calendinner-web/proxy.conf.json"
           },
           "configurations": {
             "production": {
