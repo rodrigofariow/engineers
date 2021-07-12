@@ -2,11 +2,10 @@
 
 # Engineers
 
-This project was generated using [Nx](https://nx.dev).
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Smart, Extensible Build Framework**
+## How do I run __Calendinner__ app
+Run the following 2 commands on different terminal windows:
+- `yarn start calendinner-web`
+- `yarn start calendinner-api`
 
 ## Adding capabilities to your workspace
 
