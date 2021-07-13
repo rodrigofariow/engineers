@@ -1,6 +1,3 @@
-module.exports = {
-  projects: [
-    '<rootDir>/apps/calendinner-web',
-    '<rootDir>/apps/calendinner-api',
-  ],
-};
+const { getJestProjects } = require('@nrwl/jest');
+
+module.exports = { projects: getJestProjects() };

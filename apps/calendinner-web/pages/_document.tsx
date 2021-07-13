@@ -1,11 +1,17 @@
 import { ReactElement } from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class CustomDocument extends Document<{
   styleTags: ReactElement[];
 }> {
-  static getInitialProps({ renderPage }) {
+  static async getInitialProps({ renderPage }: DocumentContext) {
     const sheet = new ServerStyleSheet();
 
     const page = renderPage(
