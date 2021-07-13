@@ -1,11 +1,10 @@
 {
   "version": 2,
   "name": "engineers",
-  "build": [
-    { "src": "/dist/apps/calendinner-api/main.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/dist/apps/calendinner-api/main.js" },
-    { "handle": "filesystem" }
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/dist/apps/calendinner-api/main.js"
+    }
   ]
 }
